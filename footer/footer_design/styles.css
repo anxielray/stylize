@@ -1,0 +1,73 @@
+/* Basic reset and styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Footer styling */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Button styling */
+.toggle-button {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.toggle-button:hover {
+    background-color: #777;
+}
+
+/* Creator section styling */
+.creator-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.creator {
+    text-align: center;
+}
+
+.creator-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.creator-name {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Username section styling */
+.username-section {
+    margin-top: 20px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+/* Hide elements by default */
+.hidden {
+    display: none;
+}
