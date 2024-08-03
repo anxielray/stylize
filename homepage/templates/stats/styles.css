@@ -1,0 +1,249 @@
+body {
+    background-color: #000000;
+    /*#1e1e1e;*/
+}
+
+body,
+h1,
+p {
+    text-shadow: -1px 8px 5px #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background: linear-gradient(to right, rgb(94, 7, 7), rgb(9, 9, 122));
+    color: #fff;
+    padding: 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    height: 70px;
+    margin: 0 auto;
+}
+
+.logo img {
+    max-height: 50px;
+    position: absolute;
+    top: 40px;
+}
+
+.header-content {
+    text-align: center;
+    flex: 1;
+}
+
+.header-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.header-subtitle {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.header-buttons {
+    margin-top: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+.btn-primary {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Background Letters Animation */
+#background-letters {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.letter {
+    position: absolute;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+    opacity: 0;
+    animation: fadeMove 6s infinite;
+}
+
+@keyframes fadeMove {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+}
+
+.banner-files {
+    font-family: monospace;
+    font-size: 1rem;
+}
+
+form {
+    position: absolute;
+    top: 125px;
+    width: 330px;
+    height: 130px;
+    left: 370px;
+    justify-content: center;
+    align-items: center;
+    color: #f0f0f0;
+    background: rgba(8, 8, 171, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgb(255, 255, 255);
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+    /* font-size: 1rem; */
+    font-family: 'Lucida Handwriting', serif;
+    margin: 10px 0;
+    height: 7px;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    height: 100px;
+    border: 1px solid #2d2d2d;
+    background: #333;
+    color: #f0f0f0;
+}
+
+button {
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+button:hover,
+button:active {
+    color: rgb(192, 255, 67);
+    text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+}
+
+#result {
+    text-align: center;
+    padding: 40px 40px;
+    margin: 50px auto;
+    max-width: 1000px;
+    overflow: scroll;
+    border-radius: 10px;
+    text-justify: center;
+}
+
+.result-form {
+    text-justify: center;
+    text-align: center;
+    color: greenyellow;
+    padding-top: 4em;
+    text-shadow: -1px -1px 0 #0b07c4,
+        1px -1px 0 #0b07c4,
+        -1px 1px 0 #0b07c4,
+        1px 1px 0 #0b07c4;
+}
+
+.footer {
+    background: linear-gradient(to top, rgb(35, 32, 83), black);
+    color: white;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+}
+
+.footer-logo img {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.footer-creators {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.footer-creators.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.creator {
+    text-align: center;
+}
+
+.creator img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.creator p {
+    margin-top: 10px;
+}
