@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Ascii Art</title>
+    <link rel="icon" href="stats/coloricon.jpeg">
+    <link rel="stylesheet" href="stats/styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="stats/image.png" alt="Logo">
+            </div>
+            <div class="header-content">
+                <h1 class="header-title">STYLIZE IT</h1>
+                <p class="header-subtitle">Explore our fonts</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <form action="/ascii-art" method="POST" id="tech-form">
+            <!-- <label for="input-text">Enter your text:</label> -->
+            <textarea class="text" type="text" id="message" name="message" placeholder="Type here..." required></textarea>
+            <div class="banner-files">
+                <input type="radio" id="banner-shadow" name="banner" value="shadow">
+                <label for="banner-shadow">Shadow</label>
+                <input type="radio" id="banner-standard" name="banner" value="standard" checked>
+                <label for="banner-standard">Standard</label>
+                <input type="radio" id="banner-thinkertoy" name="banner" value="thinkertoy">
+                <label for="banner-thinkertoy">Thinkertoy</label><br><br>
+            </div>
+            <button type="submit">Generate</button>
+        </form>
+        <div id="background-letters"></div>
+        <script src="stats/script.js"></script>
+        <div class="result-form">
+            <div id="result">
+                <pre>{{.Result}}</pre>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="stats/image.png" alt="Logo">
+            </div>
+            <div class="footer-creators">
+                <div class="creator">
+                    <img src="stats/joan.png" alt="Creator 1">
+                    <p>Creator 1</p>
+                </div>
+                <div class="creator">
+                    <img src="stats/anxr.png" alt="Creator 2">
+                    <p>Creator 2</p>
+                </div>
+                <div class="creator">
+                    <img src="stats/cheril.png" alt="Creator 3">
+                    <p>Creator 3</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Ascii Art Stylize</p>
+        </div>
+    </footer>
+</body>
+
+</html>
