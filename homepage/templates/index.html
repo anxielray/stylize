@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascii Art</title>
+    <link rel="icon" Content-Type="image/jpeg"
+        href="https://pbs.twimg.com/media/GUEPWm9XYAASjIM?format=jpg&name=4096x4096">
+    <!-- <link rel="stylesheet" href="stats/styles.css">\ -->
+    <style>
+        body {
+            background-color: #000000;
+            /*#1e1e1e;*/
+        }
+
+        h1 {
+            font-family: 'Canela Deck Web', sans-serif;
+        }
+
+        body,
+        h1,
+        p {
+            text-shadow: -1px 8px 5px #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background: linear-gradient(to right, rgb(94, 7, 7), rgb(9, 9, 122));
+            color: #fff;
+            padding: 20px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            max-height: 50px;
+            position: absolute;
+            top: 40px;
+        }
+
+        .header-content {
+            text-align: center;
+            flex: 1;
+        }
+
+        .header-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'Canela Deck Web', sans-serif;
+        }
+
+        .header-subtitle {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .header-buttons {
+            margin-top: 10px;
+        }
+
+        /* Background Letters Animation */
+        #background-letters {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .letter {
+            position: absolute;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.7);
+            white-space: nowrap;
+            opacity: 0;
+            animation: fadeMove 6s infinite;
+        }
+
+        @keyframes fadeMove {
+            0% {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+        }
+
+        .banner-files {
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        form {
+            position: absolute;
+            top: 125px;
+            width: 330px;
+            height: 130px;
+            left: 370px;
+            justify-content: center;
+            align-items: center;
+            color: #f0f0f0;
+            background: rgba(8, 8, 171, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgb(255, 255, 255);
+        }
+
+        button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+            /* font-size: 1rem; */
+            font-family: 'Lucida Handwriting', serif;
+            margin: 10px 0;
+            height: 7px;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+        }
+
+        textarea {
+            resize: none;
+            width: 100%;
+            height: 100px;
+            border: 1px solid #2d2d2d;
+            background: #333;
+            color: #f0f0f0;
+        }
+
+        button {
+            background: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        button:hover,
+        button:active {
+            color: rgb(192, 255, 67);
+            text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+        }
+
+        #result {
+            /* color: greenyellow; */
+
+            text-align: center;
+            padding: 40px 40px;
+            margin: 50px auto;
+            max-width: 1000px;
+            overflow: auto;
+            border-radius: 10px;
+            text-justify: center;
+            text-shadow: -1px -1px 0 #d01010, 1px -1px 0 #ca159c, -1px 1px 0 #0ac9ff, 1px 1px 0 #d85217;
+        }
+
+        /*hide the scroll bar on default*/
+        #result::-webkit-scrollbar {
+            width: 0;
+        }
+
+        #result:hover::-webkit-scrollbar {
+            width: 8px;
+            background-color: rgb(22, 23, 45);
+            border-radius: 100%;
+            /* Set the width to 8px when hovered */
+        }
+
+        .result-form {
+            text-justify: center;
+            text-align: center;
+            padding-top: 4em;
+        }
+
+        .footer {
+            background: linear-gradient(to top, rgb(35, 32, 83), black);
+            color: white;
+            padding: 20px;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .footer-logo img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .footer-creators {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .footer-creators.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .creator {
+            text-align: center;
+        }
+
+        .creator img {
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            object-fit: cover;
+        }
+
+        .creator p {
+            margin-top: 10px;
+        }
+
+        .creator-links {
+            display: flex;
+            gap: 4px;
+            order: 2;
+            justify-content: center;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="https://pbs.twimg.com/media/GUEPQkGWQAAtiPZ?format=jpg&name=small" alt="Logo" />
+            </div>
+            <div class="header-content">
+                <h1 class="header-title">STYLIZE IT</h1>
+                <p class="header-subtitle">Explore our fonts</p>
+            </div>
+        </div>
+    </header>
+    <main><br><br><br><br><br>
+        <form action="/ascii-art" method="POST" id="tech-form">
+            <!-- <label for="input-text">Enter your text:</label> -->
+            <textarea class="text" type="text" id="message" name="message" placeholder="Type here..."
+                required></textarea>
+            <div class="banner-files">
+                <input type="radio" id="banner-shadow" name="banner" value="shadow">
+                <label for="banner-shadow">Shadow</label>
+                <input type="radio" id="banner-standard" name="banner" value="standard" checked>
+                <label for="banner-standard">Standard</label>
+                <input type="radio" id="banner-thinkertoy" name="banner" value="thinkertoy">
+                <label for="banner-thinkertoy">Thinkertoy</label><br><br>
+            </div>
+            <button type="submit">Generate</button>
+        </form>
+        <div id="background-letters"></div>
+        <script>
+            // Generate random letters and animate them
+            const lettersContainer = document.getElementById('background-letters');
+
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            const numLetters = 20;
+
+            for (let i = 0; i < numLetters; i++) {
+                const letter = document.createElement('div');
+                letter.className = 'letter';
+                letter.textContent = letters[Math.floor(Math.random() * letters.length)];
+
+                // Randomize position and animation delay
+                letter.style.left = `${Math.random() * 100}vw`;
+                letter.style.top = `${Math.random() * 100}vh`;
+                letter.style.fontFamily = `'Lucida Handwriting', cursive`;
+                letter.style.fontSize = `${Math.random() * 2 + 1}rem`; // Random font size for variety
+                letter.style.animationDelay = `${Math.random() * 5}s`;
+
+                lettersContainer.appendChild(letter);
+            }
+
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const footer = document.querySelector('footer');
+                const footerCreators = document.querySelector('.footer-creators');
+
+                function onScroll() {
+                    const footerPosition = footer.getBoundingClientRect().top;
+                    const viewportHeight = window.innerHeight;
+
+                    if (footerPosition <= viewportHeight) {
+                        footerCreators.classList.add('show');
+                    } else {
+                        footerCreators.classList.remove('show');
+                    }
+                }
+
+                window.addEventListener('scroll', onScroll);
+                // Check if the footer is in view on initial load
+                onScroll();
+            });
+        </script>
+        <div class="result-form">
+            <div id="result">
+                <pre>{{.Result}}</pre>
+            </div>
+        </div>
+    </main>
+    <div>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://pbs.twimg.com/media/GUEPQkGWQAAtiPZ?format=jpg&name=small" alt="Logo">
+                </div>
+                <div class="footer-creators">
+                    <div class="creator">
+                        <img src="joan.jpeg" alt="Joan Wambgu">
+                        <p>Joan Wambgu</p>
+                        <div class="creator-links">
+                            <a target="_blank" href="https://github.com/joan2509">
+                                <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
+                                    style="width: 48px; height: 48px;" alt="gitub icon">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="creator">
+                        <a href="https://pbs.twimg.com/media/GT1XfWXXAAAsukT?format=jpg&name=4096x4096">
+                            <img decoding="sync"
+                                src="https://pbs.twimg.com/media/GT1XfWXXAAAsukT?format=jpg&name=4096x4096"
+                                alt="AnxielRay">
+                        </a>
+                        <p>AnxielRay</p>
+                        <div class="creator-links">
+                            <a target="_blank" href="https://github.com/anxielRay">
+                                <img style="width: 48px; height: 48px;"
+                                    src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
+                                    alt="gitub icon">
+                            </a>
+                            <a target="_blank"
+                                href="https://www.google.com/search?q=raymond+ogwel&sca_esv=8bfd042df153f1d7&sxsrf=ADLYWIIXj9pvVjnTUrGDPJxtE-f3RSui0Q%3A1722701518585&ei=zlauZrCoI4aXxc8Pxe3OiQ8&ved=0ahUKEwiwx8agm9mHAxWGS_EDHcW2M_EQ4dUDCBE&uact=5&oq=raymond+ogwel&gs_lp=Egxnd3Mtd2l6LXNlcnAiDXJheW1vbmQgb2d3ZWwyChAjGIAEGCcYigUyBBAjGCcyCBAAGIAEGKIEMggQABiABBiiBDIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiABBiiBEi7EFCQB1juDXABeACQAQCYAa4CoAG9BKoBBTItMS4xuAEDyAEA-AEBmAICoALSBJgDAIgGAZIHBTItMS4xoAfJCA&sclient=gws-wiz-serp">
+                                <img src="https://www.harvard.edu/wp-content/uploads/2023/11/Linkedin-1.png"
+                                    style="width: 48px; height: 48px;" alt="LinkedIn" aria-hidden="true">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="creator">
+                        <img src="cheril.jpeg" alt="Cherrypick14">
+                        <p>Cherrypick14</p>
+                        <div class="creator-links">
+                            <a target="_blank" href="https://github.com/Cherrypick14">
+                                <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
+                                    style="width: 48px; height: 48px;" alt="gitub icon">
+                            </a>
+                            <a target="_blank"
+                                href="https://www.google.com/search?q=cheril+owalla&sca_esv=8bfd042df153f1d7&sxsrf=ADLYWILEgfezVq1Sn0yrzZdEnIjIrAcn5A%3A1722701526574&ei=1lauZpHLIrDhxc8Po5mv8QY&ved=0ahUKEwiRjq6km9mHAxWwcPEDHaPMK24Q4dUDCBE&uact=5&oq=cheril+owalla&gs_lp=Egxnd3Mtd2l6LXNlcnAiDWNoZXJpbCBvd2FsbGEyBxAhGKABGAoyBxAhGKABGAoyBxAhGKABGAoyBRAhGJ8FMgUQIRifBTIFECEYnwUyBRAhGJ8FMgUQIRifBTIFECEYnwUyBRAhGJ8FSNcwUOoJWLgtcAJ4AJABAJgBjQOgAckdqgEFMi03Lja4AQPIAQD4AQGYAg-gAowgqAIOwgIHECMYsAMYJ8ICCBAAGIAEGLADwgILEAAYgAQYsAMYogTCAgcQIxgnGOoCwgIXEC4YgAQYkQIYtAIYyAMYigUY6gLYAQHCAhQQABiABBiRAhi0AhiKBRjqAtgBAsICBBAjGCfCAgsQABiABBiRAhiKBcICCBAAGIAEGLEDwgILEC4YgAQYsQMYgwHCAg4QABiABBixAxiDARiKBcICERAuGIAEGLEDGNEDGIMBGMcBwgIKECMYgAQYJxiKBcICChAAGIAEGEMYigXCAgoQLhiABBhDGIoFwgIFEC4YgATCAgsQABiABBixAxiDAcICDhAuGIAEGLEDGIMBGIoFwgINEC4YgAQYsQMYQxiKBcICBRAAGIAEwgIIEC4YgAQYsQPCAhkQLhiABBhDGIoFGJcFGNwEGN4EGN8E2AEDwgINEAAYgAQYsQMYRhj5AcICJxAAGIAEGLEDGEYY-QEYlwUYjAUY3QQYRhj5ARj0Axj1Axj2A9gBBMICBxAuGIAEGArCAgcQABiABBgKwgIKEC4YgAQY1AIYCsICFhAuGIAEGAoYlwUY3AQY3gQY3wTYAQPCAgYQABgWGB7CAgoQABgWGAoYHhgPwgIIEAAYFhgKGB7CAggQABiABBiiBMICCBAAGKIEGIkFwgIHEC4YgAQYDcICBxAAGIAEGA3CAhYQLhiABBgNGJcFGNwEGN4EGOAE2AEDwgIIEAAYCBgNGB6YAxaIBgGQBge6BgYIARABGAi6BgYIAhABGAG6BgYIAxABGBS6BgYIBBABGBOSBwkyLjAuNy40LjKgB47qAQ&sclient=gws-wiz-serp">
+                                <img src="https://www.harvard.edu/wp-content/uploads/2023/11/Linkedin-1.png"
+                                    style="width: 48px; height: 48px;" alt="LinkedIn" aria-hidden="true">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div><br><br><br><br>
+            <div>
+                <a target="_blank" href="https://www.zone01kisumu.ke/">
+                    <img src="https://media.licdn.com/dms/image/D4D0BAQHwtjCOm32kRg/company-logo_200_200/0/1704353148041/zone01kisumu_logo?e=2147483647&v=beta&t=q2Awu8W8M_SgHfw0wSHAlzqLfwWsmAEOsXzuOdt2FfQ"
+                    stylize="width: 30px; height: 30px;" alt="zone01">
+                </a>
+            </div>
+            <div class="copyright">
+                <p>Copyright &copy; 2024 Ascii Art Stylize</p>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>
