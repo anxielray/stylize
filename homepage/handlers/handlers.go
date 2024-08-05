@@ -96,7 +96,7 @@ func serveErrorPage(w http.ResponseWriter, r *http.Request, statusCode int) {
 	var filename string
 
 	switch statusCode {
-	case http.StatusNotFound:
+	case http.StatusNotFound:	
 		filename = "templates/404.html"
 	case http.StatusInternalServerError:
 		filename = "templates/500.html"
